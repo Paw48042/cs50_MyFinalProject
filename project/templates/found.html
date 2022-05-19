@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+Homepage
+{% block main %}
+<h3>Welcome to 1-29 INF BN Library</h3>
+</form>
+<h5>Search Result</h5>
+<table class = "table">
+    <thead>
+        <th scope = "col">Book ID</th>
+        <th scope = "col">Code</th>
+        <th scope = "col">Book Name</th>
+        <th scope = "col">Release Year</th>
+        <th scope = "col">Authors</th>
+        <th scope = "col">Status</th>
+    </thead>
+{% for item in query %}
+    {% if 'Available' in item.status %}
+    <tr class="table-success">
+        <td>{{ item.book_id }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.book_name }}</td>
+        <td>{{ item.release_year }}</td>
+        <td>{{ item.authors }}</td>
+        <td>{{ item.status }}</td>
+    </tr>
+    {% else %}
+    <tr class="table-danger">
+        <td>{{ item.book_id }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.book_name }}</td>
+        <td>{{ item.release_year }}</td>
+        <td>{{ item.authors }}</td>
+        <td>{{ item.status }}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+{% endblock %}

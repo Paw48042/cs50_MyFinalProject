@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700&display=swap');
+#animate
+{
+    transform-origin: 50% 100%;
+    color : white;
+    display: inline-block;
+    line-height: 1em;
+}
+.navbar
+{
+    background-image:url(camouflage.jpeg);
+    background-repeat: false;
+    background-size: cover;
+    min-height: 120 px;
+}
+nav .navbar-brand
+{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 40px;
+    color: #338BA8;
+    letter-spacing : 0.1em;
+}
+.dropdown-item
+{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 15px;
+    color: #338BA8;
+}
+
+.navbar-nav
+{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 20px;
+    color: #338BA8;
+}
+#register
+{
+    color : white;
+}
+#login
+{
+    color : white;
+}
+#forgot
+{
+    color : white;
+}
+
+body
+{
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    background-image : url(Soldier.jpg);
+    background-repeat : no-repeat;
+    background-position : left bottom;
+    background-attachment : fixed;
+    background-size: 768px 480px;
+    z-index : -1;
+}
+#navbarDropdownMenuLink
+{
+    color : white;
+}
