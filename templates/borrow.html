@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+Homepage
+{% block main %}
+<h3>Welcome to 1-29 INF BN Library</h3>
+<form action = "/borrow" method = "POST">
+    <div class="form-group">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Search from</label>
+        <select class="form-control" id="exampleFormControlSelect1" name = "search">
+            <option selected>Choose from...</option>
+            <option>Book_ID</option>
+            <option>Code</option>
+            <option>Book_Name</option>
+            <option>Release_Year</option>
+            <option>Authors</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Enter Keyword</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Keyword" name = "clue">
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+<table class = "table">
+    <thead>
+        <th scope = "col">Book ID</th>
+        <th scope = "col">Code</th>
+        <th scope = "col">Book Name</th>
+        <th scope = "col">Release Year</th>
+        <th scope = "col">Authors</th>
+        <th scope = "col">Status</th>
+        <th scope = "col">Action</th>
+    </thead>
+    {% for item in query %}
+    {% if 'Available' in item.status %}
+    <tr class="table-success">
+        <td>{{ item.book_id }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.book_name }}</td>
+        <td>{{ item.release_year }}</td>
+        <td>{{ item.authors }}</td>
+        <td>{{ item.status }}</td>
+        <td><form action = "/borrow" method = "POST"><input name = "borrow" type = "hidden" value = "{{ item.book_id }}" ><input type="submit" class="btn btn-outline-success" value = "Borrow" ></form></td>
+    </tr>
+    {% else %}
+    <tr class="table-warning">
+        <td>{{ item.book_id }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.book_name }}</td>
+        <td>{{ item.release_year }}</td>
+        <td>{{ item.authors }}</td>
+        <td>{{ item.status }}</td>
+        <td><button type="button" class="btn btn-outline-secondary" disabled>Borrow</button></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+{% endblock %}

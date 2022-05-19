@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+Homepage
+{% block main %}
+<h3>Welcome to 1-29 INF BN Library</h3>
+<h5> Your borrowed book</h5>
+<table class = "table">
+    <thead>
+        <th scope = "col">Transaction ID</th>
+        <th scope = "col">Book ID</th>
+        <th scope = "col">Book Name</th>
+        <th scope = "col">Borrowed Date</th>
+        <th scope = "col">Return Date</th>
+        <th scope = "col">Status</th>
+    </thead>
+{% for item in query %}
+<tr>
+    <td>{{ item.transaction_id }}</td>
+    <td>{{ item.book_id }}</td>
+    <td>{{ item.book_name }}</td>
+    <td>{{ item.date }}</td>
+    <td>{{ item.return_date }}</td>
+    <td>{{ item.status }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

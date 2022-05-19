@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+Homepage
+{% block main %}
+<h3>Welcome to 1-29 INF BN Library</h3>
+<form action = "/lookup" method = "POST">
+    <div class="form-group">
+        <label class="mr-sm-2" for="inlineFormCustomSelect">Search from</label>
+        <select class="form-control" id="exampleFormControlSelect1" name = "search">
+            <option selected>Choose from...</option>
+            <option>Book_ID</option>
+            <option>Code</option>
+            <option>Book_Name</option>
+            <option>Release_Year</option>
+            <option>Authors</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Enter Keyword</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Keyword" name = "clue">
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+{% endblock %}

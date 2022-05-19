@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+#animate
+{
+    transform-origin: 50% 100%;
+    display: inline-block;
+    line-height: 1em;
+}
+nav .navbar-brand
+{
+    font-family: 'Goldman', cursive;
+    font-size: 40px;
+    color: #338BA8;
+    letter-spacing : 0.1em;
+}
+.dropdown-item
+{
+    font-family: 'Goldman', cursive;
+    font-size: 15px;
+    color: #338BA8;
+}
+
+.navbar-nav
+{
+    font-family: 'Goldman', cursive;
+    font-size: 20px;
+    color: #338BA8;
+}
+
+
+body
+{
+    font-family: 'Goldman', cursive;
+}

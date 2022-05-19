@@ -1,0 +1,77 @@
+CREATE TABLE users
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    firstname TEXT NOT NULL,
+    lastname TEXT NOT NULL,
+    email TEXT NOT NULL,
+    extend_chance INT NOT NULL
+)
+
+CREATE TABLE book_data
+(
+    book_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    book_name TEXT NOT NULL,
+    authors TEXT NOT NULL,
+    status TEXT NOT NULL
+)
+
+CREATE TABLE ?(party_name)
+(
+    guest_number INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    guest_id INTEGER NOT NULL,
+    attendance TEXT NOT NULL,
+    FOREIGN KEY(guest_id) REFERENCES users(id)
+)
+
+CREATE TABLE event
+(
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    guest_id INTEGER NOT NULL,
+    party_id INTEGER NOT NULL,
+    party_name TEXT NOT NULL,
+    things TEXT,
+    price REAL,
+    FOREIGN KEY(guest_id) REFERENCES users(id)
+);
+
+CREATE TABLE history
+(
+    transaction_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    book_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    date DATETIME NOT NULL,
+    return_date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (book_id) REFERENCES book_data(book_id)
+);
+
+CREATE TABLE book_data
+(
+    book_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    code TEXT NOT NULL,
+    book_name TEXT NOT NULL,
+    release_year INTEGER NOT NULL,
+    authors TEXT NOT NULL,
+    status TEXT NOT NULL
+);
+# borrow
+            bookid = request.form.get("borrow")
+            borrow_date = datetime.datetime.now()
+            return_date = borrow_date + datetime.timedelta(days = 7)
+            db.execute("INSERT INTO history (book_id, user_id, date, return_date) VALUES (?, ?, ?, ?)", bookid, user, borrow_date, return_date)
+            db.execute("UPDATE TABLE book_data SET status = borrowed WHERE book_id = ?", bookid)
+            flash("You've successfully borrow book")
+            # send email as a ticket to receives the book by yourselves
+            return render_template("borrowed.html")
+
+
+
+            @app.route("/success", methods = ["GET", "POST"])
+@login_required
+def success():
+    if request.method == "POST":
+        user = session["user_id"]
+        books = session["books"]
+        return render_template("success.html")
